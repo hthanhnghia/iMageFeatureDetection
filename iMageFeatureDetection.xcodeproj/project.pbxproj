@@ -118,19 +118,19 @@
 			isa = PBXGroup;
 			children = (
 				7C7009341E85A76D0027CFC4 /* opencv2.framework */,
-				7C70093F1E85A7E90027CFC4 /* OpenCVWrapper.h */,
-				7C7009401E85A7E90027CFC4 /* OpenCVWrapper.mm */,
-				7C70093C1E85A7E80027CFC4 /* iMageFeatureDetection-Bridging-Header.h */,
-				7C70093D1E85A7E80027CFC4 /* iMageFeatureDetectionTests-Bridging-Header.h */,
-				7C70093E1E85A7E80027CFC4 /* iMageFeatureDetectionUITests-Bridging-Header.h */,
 				7C7009021E85A7460027CFC4 /* AppDelegate.swift */,
 				7C7009041E85A7460027CFC4 /* ViewController.swift */,
 				7C7009061E85A7460027CFC4 /* Main.storyboard */,
 				7C7009091E85A7460027CFC4 /* Assets.xcassets */,
 				7C70090B1E85A7460027CFC4 /* LaunchScreen.storyboard */,
 				7C70090E1E85A7460027CFC4 /* Info.plist */,
+				7C70093F1E85A7E90027CFC4 /* OpenCVWrapper.h */,
+				7C7009401E85A7E90027CFC4 /* OpenCVWrapper.mm */,
 				7C7009441E85A88B0027CFC4 /* OpenCVFeatureDetection.cpp */,
 				7C7009451E85A88B0027CFC4 /* OpenCVFeatureDetection.hpp */,
+				7C70093C1E85A7E80027CFC4 /* iMageFeatureDetection-Bridging-Header.h */,
+				7C70093D1E85A7E80027CFC4 /* iMageFeatureDetectionTests-Bridging-Header.h */,
+				7C70093E1E85A7E80027CFC4 /* iMageFeatureDetectionUITests-Bridging-Header.h */,
 			);
 			path = iMageFeatureDetection;
 			sourceTree = "<group>";
