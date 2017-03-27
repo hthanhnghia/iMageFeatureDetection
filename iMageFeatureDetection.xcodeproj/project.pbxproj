@@ -22,9 +22,9 @@
 		7C7009481E85A88B0027CFC4 /* OpenCVFeatureDetection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7009441E85A88B0027CFC4 /* OpenCVFeatureDetection.cpp */; };
 		7C76A9561E88ADBA00EFA0B6 /* iMageFeatureDetection-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 7C70093C1E85A7E80027CFC4 /* iMageFeatureDetection-Bridging-Header.h */; };
 		7C76A9571E88ADC600EFA0B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7009041E85A7460027CFC4 /* ViewController.swift */; };
-		7C76A9591E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A9581E88AEFF00EFA0B6 /* opencv2.framework */; };
-		7C76A95A1E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A9581E88AEFF00EFA0B6 /* opencv2.framework */; };
-		7C76A95B1E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A9581E88AEFF00EFA0B6 /* opencv2.framework */; };
+		7C76A95D1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A95C1E88B9F000EFA0B6 /* opencv2.framework */; };
+		7C76A95E1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A95C1E88B9F000EFA0B6 /* opencv2.framework */; };
+		7C76A95F1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A95C1E88B9F000EFA0B6 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		7C7009401E85A7E90027CFC4 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 		7C7009441E85A88B0027CFC4 /* OpenCVFeatureDetection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenCVFeatureDetection.cpp; sourceTree = "<group>"; };
 		7C7009451E85A88B0027CFC4 /* OpenCVFeatureDetection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenCVFeatureDetection.hpp; sourceTree = "<group>"; };
-		7C76A9581E88AEFF00EFA0B6 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		7C76A95C1E88B9F000EFA0B6 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C76A9591E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */,
+				7C76A95D1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C76A95A1E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */,
+				7C76A95E1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C76A95B1E88AEFF00EFA0B6 /* opencv2.framework in Frameworks */,
+				7C76A95F1E88B9F000EFA0B6 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +119,7 @@
 		7C7009011E85A7460027CFC4 /* iMageFeatureDetection */ = {
 			isa = PBXGroup;
 			children = (
-				7C76A9581E88AEFF00EFA0B6 /* opencv2.framework */,
+				7C76A95C1E88B9F000EFA0B6 /* opencv2.framework */,
 				7C7009021E85A7460027CFC4 /* AppDelegate.swift */,
 				7C7009041E85A7460027CFC4 /* ViewController.swift */,
 				7C7009061E85A7460027CFC4 /* Main.storyboard */,
