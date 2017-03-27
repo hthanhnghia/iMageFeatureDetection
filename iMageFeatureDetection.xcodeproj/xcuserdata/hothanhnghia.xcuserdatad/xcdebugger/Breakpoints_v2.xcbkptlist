@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMageFeatureDetection/ViewController.swift"
-            timestampString = "512269105.080362"
+            timestampString = "512348283.429548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "captureOutput(_:didOutputSampleBuffer:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512237336.695474"
+            timestampString = "512325628.244526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat &amp;frame)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512269105.080362"
+            timestampString = "512325631.900656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat &amp;frame)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,60 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512269105.080362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512269105.080362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512269105.080362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMageFeatureDetection/OpenCVFeatureDetection.cpp"
-            timestampString = "512269105.080362"
+            timestampString = "512325635.308576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "OpenCVFeatureDetection::getNumberOfCorners(Mat frame)"
+            landmarkName = "OpenCVFeatureDetection::computeHarrisMat(Mat &amp;frame)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
