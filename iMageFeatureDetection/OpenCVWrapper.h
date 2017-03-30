@@ -9,5 +9,5 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface OpenCVWrapper : NSObject
-- (int) getNumberOfCorners:(CMSampleBufferRef) sampleBuffer;
+- (int) getNumberOfCorners:(UIImage*) uiImage;
 @end

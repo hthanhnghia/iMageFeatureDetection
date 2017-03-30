@@ -10,13 +10,10 @@
 #define OpenCVFeatureDetection_hpp
 
 #include <opencv2/opencv.hpp>
-#include <stdio.h>
 
-class OpenCVFeatureDetection
-{
-public:
-    static int getNumberOfCorners(cv::Mat &frame);
-    static cv::Mat computeHarrisMat(cv::Mat &frame);
+class OpenCVFeatureDetection {
+    public:
+        static int getNumberOfCorners(cv::Mat& frame);
 };
 
 #endif /* OpenCVFeatureDetection_hpp */

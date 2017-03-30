@@ -11,17 +11,21 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     let openCVWrapper = OpenCVWrapper()
-
-    @IBOutlet weak var liveFeedView: UIImageView!
-    @IBOutlet weak var cue: UILabel!
+    let threshold = 500
+    var captureSession: AVCaptureSession!
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    @IBOutlet var previewView: UIView!
+    @IBOutlet var cue: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         cue.isHidden = true
-        
-        let captureSession = AVCaptureSession()
+        startCameraSession()
+    }
+    
+    func startCameraSession() {
+        captureSession = AVCaptureSession()
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
         
         let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -35,10 +39,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             return
         }
         
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        view.layer.addSublayer(previewLayer!)
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer?.frame = previewView.bounds
+        previewView.layer.addSublayer(previewLayer)
         
         let videoOutput = AVCaptureVideoDataOutput()
+        videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)]
         
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
         if captureSession.canAddOutput(videoOutput) {
@@ -48,33 +55,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         captureSession.startRunning()
     }
     
-    
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!)
     {
-        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-        let cameraImage = CIImage(cvPixelBuffer: pixelBuffer!)
-    
-        DispatchQueue.main.async
-        {
-            let uiImage = UIImage(ciImage: cameraImage);
-            let numberOfCorners = self.openCVWrapper.getNumberOfCorners(sampleBuffer);
-            
-            self.liveFeedView.image = uiImage;
-            if (numberOfCorners > 50) {
-                self.cue.text = String(numberOfCorners);
-                self.cue.isHidden = false;
+        DispatchQueue.main.async {
+            let uiImage = sampleBuffer.uiImage
+            let numberOfCorners = Int(self.openCVWrapper.getNumberOfCorners(uiImage))
+            // make visual cue visible/invisible based on the number of corners detected
+            if (numberOfCorners > self.threshold) {
+                self.cue.text = String(numberOfCorners)
+                self.cue.isHidden = false
             }
             else {
-                self.cue.isHidden = true;
+                self.cue.isHidden = true
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    // Disable autorotate on the preview View while still allow the visual cue to rotate
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let targetRotation = coordinator.targetTransform
+        let inverseRotation = targetRotation.inverted()
+        
+        coordinator.animate(alongsideTransition: { context in
+            self.previewView.transform = self.previewView.transform.concatenating(inverseRotation)
+            self.previewView.frame = self.view.bounds
+            context.viewController(forKey: UITransitionContextViewControllerKey.from)
+        }, completion: nil)
     }
-
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (captureSession?.isRunning == true) {
+            captureSession.stopRunning()
+        }
+    }
 }
-

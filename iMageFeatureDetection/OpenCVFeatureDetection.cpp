@@ -8,49 +8,24 @@
 
 #include "OpenCVFeatureDetection.hpp"
 #include <iostream>
-#include <string>
 using namespace std;
 using namespace cv;
 
-#define BLOCK_SIZE 2
-#define APERTURE_SIZE 3
-#define DETECTOR_PARAM 0.04
+#define MAX_CORNERS 10000 // The maximum number of corners to return.
+#define QUALITY_LEVEL 0.01 // Characterizes the minimal accepted quality of image corners.
+#define MIN_DISTANCE 10 // The minimum possible Euclidean distance between the returned corners
+#define BLOCKSIZE 3 // Size of the averaging block for computing derivative covariation
+#define DETECTOR_PARAM 0.04 // Free parameter of Harris detector
 
-int OpenCVFeatureDetection::getNumberOfCorners(Mat &frame) {
-    if(frame.empty()) {
-        cerr << "Could not load image" << endl;
-        return -1;
-    }
-    
-    Mat harrisMat = OpenCVFeatureDetection::computeHarrisMat(frame);
-    
-    int numberOfCorners = 0;
-    int thresh = 200;
-    
-    for( int j = 0; j < harrisMat.rows ; j++ ) {
-        for( int i = 0; i < harrisMat.cols; i++ ) {
-            if( (int) harrisMat.at<float>(j,i) > thresh ) {
-                numberOfCorners += 1;
-            }
-        }
-    }
-    
+// Apply "Shi-Tomasi Corner Detector" to calculate the number of corners in a frame
+int OpenCVFeatureDetection::getNumberOfCorners(Mat& frame) {
+    Mat frameGray;
+    cvtColor(frame, frameGray, CV_BGR2GRAY);
+    vector<Point2f> corners;
+    Mat mask; // The optional region of interest.
+    bool useHarrisDetector = false; // Indicates, whether to use operator or cornerMinEigenVal()
+    goodFeaturesToTrack(frameGray, corners, MAX_CORNERS, QUALITY_LEVEL, MIN_DISTANCE, mask,BLOCKSIZE, useHarrisDetector, DETECTOR_PARAM);
+    int numberOfCorners = (int)corners.size();
+    cout<<"** Number of corners detected **: "<<numberOfCorners<<endl;
     return numberOfCorners;
 }
-
-Mat OpenCVFeatureDetection::computeHarrisMat(Mat &frame) {
-    //Preprocess the image
-    Mat frameGray;
-    cvtColor(frame, frameGray, CV_BGR2GRAY );
-    
-    Mat dst, dst_norm;
-    dst = Mat::zeros( frame.size(), CV_32FC1 );
-    
-    /// Detecting corners
-    cornerHarris(frameGray, dst, BLOCK_SIZE, APERTURE_SIZE, DETECTOR_PARAM, BORDER_DEFAULT);
-    
-    /// Normalizing
-    normalize( dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat() );
-    return dst_norm;
-}
-

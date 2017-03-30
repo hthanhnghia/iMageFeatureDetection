@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,9 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2nV-0R-YR1" userLabel="Visual Cue">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMv-WB-17c">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-D7-Guv">
                                 <rect key="frame" x="327" y="636" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -32,19 +33,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2nV-0R-YR1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4zw-xl-sao"/>
-                            <constraint firstAttribute="trailing" secondItem="2nV-0R-YR1" secondAttribute="trailing" id="8ui-AI-paY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2nV-0R-YR1" secondAttribute="bottom" id="9x0-0b-Bic"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9a4-D7-Guv" secondAttribute="bottom" constant="10" id="P23-n0-9ZP"/>
-                            <constraint firstItem="2nV-0R-YR1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XjE-dd-izA"/>
                             <constraint firstItem="9a4-D7-Guv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="q3c-sB-e5g"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cue" destination="9a4-D7-Guv" id="uq3-lO-IC8"/>
-                        <outlet property="liveFeedView" destination="2nV-0R-YR1" id="tw7-JX-lw0"/>
+                        <outlet property="cue" destination="9a4-D7-Guv" id="Lu5-OJ-bbV"/>
+                        <outlet property="previewView" destination="lMv-WB-17c" id="sxV-vI-6fH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
