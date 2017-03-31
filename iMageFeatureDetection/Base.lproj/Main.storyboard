@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,27 +20,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMv-WB-17c">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMv-WB-17c">
+                                <rect key="frame" x="0.0" y="1" width="376" height="666"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-D7-Guv">
-                                <rect key="frame" x="327" y="636" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z0q-SB-zjh">
+                                <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LXo-td-wpq"/>
+                                    <constraint firstAttribute="width" constant="50" id="lV4-fE-y8g"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9a4-D7-Guv" secondAttribute="bottom" constant="10" id="P23-n0-9ZP"/>
-                            <constraint firstItem="9a4-D7-Guv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="q3c-sB-e5g"/>
+                            <constraint firstItem="Z0q-SB-zjh" firstAttribute="centerY" secondItem="lMv-WB-17c" secondAttribute="centerY" id="8Ur-g2-zHC"/>
+                            <constraint firstItem="Z0q-SB-zjh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AWJ-aw-u9p"/>
+                            <constraint firstItem="Z0q-SB-zjh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eyN-eP-8XD"/>
+                            <constraint firstItem="Z0q-SB-zjh" firstAttribute="centerX" secondItem="lMv-WB-17c" secondAttribute="centerX" id="kBe-18-mmG"/>
+                            <constraint firstItem="lMv-WB-17c" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="vhL-1u-SgR"/>
+                            <constraint firstItem="lMv-WB-17c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yF9-iN-bUy"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cue" destination="9a4-D7-Guv" id="Lu5-OJ-bbV"/>
                         <outlet property="previewView" destination="lMv-WB-17c" id="sxV-vI-6fH"/>
+                        <outlet property="visualCue" destination="Z0q-SB-zjh" id="Kop-Ec-uY7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

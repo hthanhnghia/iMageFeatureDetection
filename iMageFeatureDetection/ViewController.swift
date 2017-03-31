@@ -11,19 +11,21 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     let openCVWrapper = OpenCVWrapper()
-    let threshold = 500
+    let visualThreshold = 800
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     @IBOutlet var previewView: UIView!
-    @IBOutlet var cue: UILabel!
+    @IBOutlet var visualCue: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cue.isHidden = true
+        visualCue.image = UIImage(named:"circle")
+        visualCue.isHidden = true
         startCameraSession()
     }
     
+    // setup and run a camera session (AVCaptureSession)
     func startCameraSession() {
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = AVCaptureSessionPresetPhoto
@@ -46,8 +48,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable : Int(kCVPixelFormatType_32BGRA)]
-        
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
+        
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
         }
@@ -55,34 +57,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         captureSession.startRunning()
     }
     
+    // passing the camera output to the OpenCv module for processing
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!)
     {
         DispatchQueue.main.async {
             let uiImage = sampleBuffer.uiImage
             let numberOfCorners = Int(self.openCVWrapper.getNumberOfCorners(uiImage))
             // make visual cue visible/invisible based on the number of corners detected
-            if (numberOfCorners > self.threshold) {
-                self.cue.text = String(numberOfCorners)
-                self.cue.isHidden = false
-            }
-            else {
-                self.cue.isHidden = true
-            }
+            self.visualCue.isHidden = (numberOfCorners < self.visualThreshold)
         }
     }
-
-    // Disable autorotate on the preview View while still allow the visual cue to rotate
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let targetRotation = coordinator.targetTransform
-        let inverseRotation = targetRotation.inverted()
-        
-        coordinator.animate(alongsideTransition: { context in
-            self.previewView.transform = self.previewView.transform.concatenating(inverseRotation)
-            self.previewView.frame = self.view.bounds
-            context.viewController(forKey: UITransitionContextViewControllerKey.from)
-        }, completion: nil)
-    }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (captureSession?.isRunning == true) {

@@ -26,6 +26,5 @@ int OpenCVFeatureDetection::getNumberOfCorners(Mat& frame) {
     bool useHarrisDetector = false; // Indicates, whether to use operator or cornerMinEigenVal()
     goodFeaturesToTrack(frameGray, corners, MAX_CORNERS, QUALITY_LEVEL, MIN_DISTANCE, mask,BLOCKSIZE, useHarrisDetector, DETECTOR_PARAM);
     int numberOfCorners = (int)corners.size();
-    cout<<"** Number of corners detected **: "<<numberOfCorners<<endl;
     return numberOfCorners;
 }
