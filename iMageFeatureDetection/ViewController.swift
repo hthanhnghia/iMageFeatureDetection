@@ -60,9 +60,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     // passing the camera output to the OpenCv module for processing
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!)
     {
+        let uiImage = sampleBuffer.uiImage
+        let numberOfCorners = Int(self.openCVWrapper.getNumberOfCorners(uiImage))
         DispatchQueue.main.async {
-            let uiImage = sampleBuffer.uiImage
-            let numberOfCorners = Int(self.openCVWrapper.getNumberOfCorners(uiImage))
             // make visual cue visible/invisible based on the number of corners detected
             self.visualCue.isHidden = (numberOfCorners < self.visualThreshold)
         }
